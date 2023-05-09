@@ -32,10 +32,12 @@ async function shortenUrl(url){
         result.prepend(newurl);
         const copybtn=document.querySelector('.newurl-btn');
         copybtn.addEventListener('click',()=>{
-            navigator.clipboard.writeText(copybtn.previousElementSibling.textContent);
-            alert(
-                "Copied"
-            );
+            navigator.clipboard.writeText(copybtn.previousElementSibling.textContent).then(()=>{
+                alert("Copied");
+            }).catch(()=>{
+                alert("Somethingn went wrong");
+            })
+           
         });
         input.value="";
     }
